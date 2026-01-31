@@ -1,12 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title data-lang="title">মুভি হাব - সিনেমা ও সিরিজ ডাউনলোড</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <h1>Welcome to HTML Editor Free</h1>
-    <p>Start editing your HTML, CSS, and JavaScript here!</p>
+    <!-- ভাষা সিলেক্টর -->
+    <div class="language-selector">
+        <button id="lang-bn" class="lang-btn active" data-lang="bn">
+            <i class="fas fa-language"></i> বাংলা
+        </button>
+        <button id="lang-en" class="lang-btn" data-lang="en">
+            <i class="fas fa-language"></i> English
+        </button>
+    </div>
+
+    <!-- Android ফ্রেম -->
+    <div class="android-frame">
+        <div class="status-bar">
+            <div class="status-left">
+                <span>9:41</span>
+            </div>
+            <div class="status-right">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+        
+        <!-- নেভিগেশন বার -->
+        <nav class="app-nav">
+            <div class="nav-left">
+                <h1 class="logo" data-lang="logo">মুভি<span>হাব</span></h1>
+            </div>
+            <div class="nav-right">
+                <button class="nav-icon search-btn" data-lang="search" title="সার্চ">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="nav-icon user-btn" data-lang="profile" title="প্রোফাইল">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="nav-icon menu-btn" id="menu-toggle" title="মেনু">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- সার্চ বক্স -->
+        <div class="search-container hidden">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="সিনেমা বা সিরিজ খুঁজুন..." data-lang-placeholder="searchPlaceholder">
+                <button class="search-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="search-results" id="search-results"></div>
+        </div>
+
+        <!-- সাইড মেনু -->
+        <aside class="side-menu" id="side-menu">
+            <div class="menu-header">
+                <h3 data-lang="menu">মেনু</h3>
+                <button class="menu-close" id="menu-close"><i class="fas fa-times"></i></button>
+            </div>
+            <ul class="menu-list">
+                <li><a href="#" class="active" data-lang="home"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="#" data-lang="movies"><i class="fas fa-film"></i> মুভিস</a></li>
+                <li><a href="#" data-lang="series"><i class="fas fa-tv"></i> সিরিজ</a></li>
+                <li><a href="#" data-lang="trending"><i class="fas fa-fire"></i> ট্রেন্ডিং</a></li>
+                <li><a href="#" data-lang="downloads"><i class="fas fa-download"></i> ডাউনলোডস</a></li>
+                <li><a href="#" data-lang="favorites"><i class="fas fa-heart"></i> ফেভারিটস</a></li>
+                <li><a href="#" data-lang="settings"><i class="fas fa-cog"></i> সেটিংস</a></li>
+            </ul>
+            <div class="menu-footer">
+                <button class="btn-logout" data-lang="logout"><i class="fas fa-sign-out-alt"></i> লগ আউট</button>
+            </div>
+        </aside>
+
+        <!-- মূল কন্টেন্ট -->
+        <main class="main-content">
+            <!-- হিরো সেকশন -->
+            <section class="hero-section">
+                <div class="hero-slider">
+                    <div class="slide active">
+                        <div class="slide-content">
+                            <h2 data-lang="heroTitle1">সেরা মুভি ও সিরিজ কালেকশন</h2>
+                            <p data-lang="heroDesc1">হাজারো মুভি ও সিরিজ এখানে পাবেন। উচ্চ গুণগত মানে ডাউনলোড করুন যেকোন সময় দেখার জন্য।</p>
+                            <button class="btn-primary" data-lang="exploreNow">এখনি এক্সপ্লোর করুন</button>
+                        </div>
+                        <div class="slide-overlay"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- মুভি/সিরিজ বিভাগ -->
+            <section class="category-section">
+                <div class="section-header">
+                    <h2 data-lang="trendingNow">ট্রেন্ডিং এখন</h2>
+                    <a href="#" class="view-all" data-lang="viewAll">সব দেখুন</a>
+                </div>
+                <div class="movies-grid" id="trending-movies">
+                    <!-- চলচ্চিত্র কার্ডগুলো JavaScript দিয়ে যোগ করা হবে -->
+                </div>
+            </section>
+
+            <!-- নতুন রিলিজ -->
+            <section class="category-section">
+                <div class="section-header">
+                    <h2 data-lang="newReleases">নতুন রিলিজ</h2>
+                    <a href="#" class="view-all" data-lang="viewAll">সব দেখুন</a>
+                </div>
+                <div class="movies-grid" id="new-releases">
+                    <!-- চলচ্চিত্র কার্ডগুলো JavaScript দিয়ে যোগ করা হবে -->
+                </div>
+            </section>
+
+            <!-- ডাউনলোড গাইড -->
+            <section class="guide-section">
+                <h2 data-lang="downloadGuide">ডাউনলোড গাইড</h2>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-icon"><i class="fas fa-search"></i></div>
+                        <h3 data-lang="step1">সিনেমা খুঁজুন</h3>
+                        <p data-lang="step1Desc">আপনার পছন্দের সিনেমা বা সিরিজ সার্চ করুন বা ব্রাউজ করুন</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon"><i class="fas fa-download"></i></div>
+                        <h3 data-lang="step2">ডাউনলোড করুন</h3>
+                        <p data-lang="step2Desc">ডাউনলোড বাটনে ক্লিক করুন এবং আপনার পছন্দের কোয়ালিটি নির্বাচন করুন</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon"><i class="fas fa-play-circle"></i></div>
+                        <h3 data-lang="step3">উপভোগ করুন</h3>
+                        <p data-lang="step3Desc">ডাউনলোড শেষে আপনার ডিভাইসে যেকোন সময় সিনেমা উপভোগ করুন</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- নোটিফিকেশন -->
+        <div class="notification" id="notification">
+            <div class="notification-content">
+                <span id="notification-text"></span>
+            </div>
+        </div>
+
+        <!-- মুভি ডিটেইল মোডাল -->
+        <div class="modal" id="movie-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title">মুভি টাইটেল</h2>
+                    <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="movie-details">
+                        <div class="movie-poster" id="modal-poster">
+                            <img src="" alt="মুভি পোস্টার">
+                        </div>
+                        <div class="movie-info">
+                            <div class="info-row">
+                                <span data-lang="genre">ধরন:</span>
+                                <span id="modal-genre">অ্যাকশন, অ্যাডভেঞ্চার</span>
+                            </div>
+                            <div class="info-row">
+                                <span data-lang="rating">রেটিং:</span>
+                                <span id="modal-rating">8.5/10 <i class="fas fa-star"></i></span>
+                            </div>
+                            <div class="info-row">
+                                <span data-lang="year">সাল:</span>
+                                <span id="modal-year">2023</span>
+                            </div>
+                            <div class="info-row">
+                                <span data-lang="duration">সময়:</span>
+                                <span id="modal-duration">2 ঘন্টা 15 মিনিট</span>
+                            </div>
+                            <div class="info-row">
+                                <span data-lang="language">ভাষা:</span>
+                                <span id="modal-language">বাংলা, ইংরেজি</span>
+                            </div>
+                            <div class="info-row full-width">
+                                <span data-lang="description">বর্ণনা:</span>
+                                <p id="modal-description">মুভির বর্ণনা এখানে প্রদর্শিত হবে</p>
+                            </div>
+                            <div class="download-options">
+                                <h3 data-lang="downloadQuality">ডাউনলোড কোয়ালিটি</h3>
+                                <div class="quality-buttons">
+                                    <button class="quality-btn" data-quality="480p">480p</button>
+                                    <button class="quality-btn active" data-quality="720p">720p</button>
+                                    <button class="quality-btn" data-quality="1080p">1080p</button>
+                                    <button class="quality-btn" data-quality="4k">4K</button>
+                                </div>
+                            </div>
+                            <div class="modal-actions">
+                                <button class="btn-primary" id="download-btn" data-lang="download">
+                                    <i class="fas fa-download"></i> ডাউনলোড
+                                </button>
+                                <button class="btn-secondary" id="watch-trailer" data-lang="watchTrailer">
+                                    <i class="fas fa-play"></i> ট্রেলার দেখুন
+                                </button>
+                                <button class="btn-outline" id="add-favorite" data-lang="addFavorite">
+                                    <i class="far fa-heart"></i> ফেভারিটে যোগ করুন
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="languages.js"></script>
+    <script src="script.js"></script>
 </body>
-</html>
+                </html>
